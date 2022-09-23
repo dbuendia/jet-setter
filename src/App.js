@@ -22,7 +22,6 @@ function App() {
     setaddElementBarValue(e.target.value);
   }
 
-  // TODO reset el input del usuario después de añadir un elemento
   function onButtonClick(value, e) {
     // Acción inmutable
     const updatedItems = [
@@ -34,7 +33,6 @@ function App() {
       },
     ];
     setItems(updatedItems);
-    debugger;
     // Reinicio el input del usuario si se envía un input con enter
     e.target.value = "";
 
