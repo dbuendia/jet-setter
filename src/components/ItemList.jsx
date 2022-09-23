@@ -18,6 +18,7 @@ function ItemList({
         type="text"
         onChange={(e) => setUserInput(e.target.value)}
         value={userInput}
+        placeholder="Busca un ítem en la lista"
       ></input>
       <ul>
         {items.map((elem) => {

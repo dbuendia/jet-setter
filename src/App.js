@@ -7,8 +7,11 @@ import { items as initialItems } from "./data/items.js";
 
 function App() {
   // States:
+
   // Dataset
   const [items, setItems] = useState(initialItems);
+
+  // Inputs del usuario para filtrar las listas:
   const [packedFilterInput, setpackedFilterInput] = useState("");
   const [unpackedFilterInput, setunpackedFilterInput] = useState("");
 
@@ -17,14 +20,13 @@ function App() {
     "Añade un nuevo elemento"
   );
 
-  // TODO borrar el input despues del onclick
+  // TODO reset el input del usuario después de añadir un elemento
   function handleInputBarChange(e) {
     setaddElementBarValue(e.target.value);
-    return e.target.value;
   }
 
   function onButtonClick(value) {
-    // Creo un nuevo array con los items existentes + el nuevo item
+    // Acción inmutable
     const updatedItems = [
       ...items,
       {
@@ -36,7 +38,7 @@ function App() {
     setItems(updatedItems);
   }
 
-  // Select the correct items for each list
+  // Selecciona los ítems correctos para cada lista
   let packedItems = [];
   let unpackedItems = [];
 
@@ -51,11 +53,6 @@ function App() {
   });
 
   const filterUnpackedItems = unpackedItems.filter((elem) => {
-    // // Retorno los elementos que sean packed true para que no se quiten de la UI
-    // if (elem.packed === true) {
-    //   return true;
-    // }
-    // Ahora retorno los elementos filtrados de la lista 1
     if (
       elem.value.toUpperCase().indexOf(unpackedFilterInput.toUpperCase()) >= 0
     ) {
@@ -82,49 +79,6 @@ function App() {
     setItems(updatedItems);
   }
 
-  // function filterItemList(e, listId) {
-  //   console.log("buscando: " + e.target.value);
-  //   // Si la lista es de No Empacados
-  //   if (listId === "1") {
-  //     unpackedItems = unpackedItems.filter((elem) => {
-  //       // // Retorno los elementos que sean packed true para que no se quiten de la UI
-  //       // if (elem.packed === true) {
-  //       //   return true;
-  //       // }
-  //       // Ahora retorno los elementos filtrados de la lista 1
-  //       if (
-  //         elem.value.toUpperCase().indexOf(e.target.value.toUpperCase()) >= 0
-  //       ) {
-  //         return true;
-  //       }
-  //     });
-  //   }
-  //   console.log(unpackedItems);
-  // }
-
-  // Lo contrario para la lista de Empacados
-  // } else if (listId === "2") {
-  //   if (elem.packed === false) {
-  //     return true;
-  //   }
-  //   if (
-  //     elem.value.toUpperCase().indexOf(e.target.value.toUpperCase()) >= 0
-  //   ) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-  // });
-  // setItems(filteredItems);
-  // }
-
-  // function moveItems() {
-  //   let movedItems = items.map((elem) => {
-  //     if (elem.)
-  //   })
-  // }
-
   function checkItems(id) {
     const markedItems = items.map((elem) => {
       if (elem.id === id) {
@@ -134,7 +88,6 @@ function App() {
         return elem;
       }
     });
-
     setItems(markedItems);
   }
 
@@ -148,7 +101,6 @@ function App() {
         return elem;
       }
     });
-
     setItems(allMarkedItems);
   }
 

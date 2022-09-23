@@ -4,7 +4,7 @@ function Item({ value, removeElement, id, checkItems }) {
       <input type="checkbox" onChange={() => checkItems(id)} />
       <span>{value}</span>
       <span className="delete" onClick={() => removeElement(id)}>
-        Borrar
+        Eliminar
       </span>
     </li>
   );
