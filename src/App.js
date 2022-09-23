@@ -23,7 +23,6 @@ function App() {
   }
 
   function onButtonClick(value, e) {
-    // Acción inmutable
     const updatedItems = [
       ...items,
       {
@@ -33,10 +32,9 @@ function App() {
       },
     ];
     setItems(updatedItems);
-    // Reinicio el input del usuario si se envía un input con enter
-    e.target.value = "";
 
-    // TODO: Reiniciar el input del usuario si se envía con el botón...
+    // Actualizamos el estado para que se resetee la barra de input con cada uso
+    setaddElementBarValue("");
   }
 
   // Selecciona los ítems correctos para cada lista
@@ -137,3 +135,14 @@ function App() {
 }
 
 export default App;
+
+// export default function App() {
+//   const [val, setVal] = useState();
+
+//   return (
+//     <div>
+//       <input type="text" value={val} />
+//       <button onClick={() => setVal(() => "")}>Reset</button>
+//     </div>
+//   );
+// }

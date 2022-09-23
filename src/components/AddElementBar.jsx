@@ -7,12 +7,13 @@ function AddElementBar({ value, onChange, onClick }) {
         placeholder="Añade un nuevo elemento"
         onChange={onChange}
         onKeyPress={(e) => (e.key === "Enter" ? onClick(value, e) : null)}
+        value={value}
       ></input>
       <button
         className="default"
         type="submit"
         name="submit"
-        onClick={(e) => onClick(value, e)}
+        onClick={() => onClick(value)}
       >
         Añadir
       </button>
