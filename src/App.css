@@ -133,3 +133,18 @@ padding: 0 20px 20px 20px;
 .btn-reset {
   width: 80%;
 }
+
+@media (max-width: 425px) {
+  .input-bar {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .input-bar input[type="text"] {
+    width: 80%;
+  }
+  .input-bar button {
+    width: 80%;
+  }
+}
