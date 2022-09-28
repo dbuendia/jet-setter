@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/jet-setter/static/css/main.a2c27f83.css",
+    "main.css": "/jet-setter/static/css/main.e4a74468.css",
     "main.js": "/jet-setter/static/js/main.bde20cd4.js",
     "static/js/787.0980635e.chunk.js": "/jet-setter/static/js/787.0980635e.chunk.js",
     "index.html": "/jet-setter/index.html",
-    "main.a2c27f83.css.map": "/jet-setter/static/css/main.a2c27f83.css.map",
+    "main.e4a74468.css.map": "/jet-setter/static/css/main.e4a74468.css.map",
     "main.bde20cd4.js.map": "/jet-setter/static/js/main.bde20cd4.js.map",
     "787.0980635e.chunk.js.map": "/jet-setter/static/js/787.0980635e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a2c27f83.css",
+    "static/css/main.e4a74468.css",
     "static/js/main.bde20cd4.js"
   ]
 }
