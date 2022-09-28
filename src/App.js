@@ -127,7 +127,7 @@ function App() {
         packed={true}
       />
       <button className="btn-reset default" onClick={checkAllItems}>
-        Marcar todos los elementos como no empacados
+        Marcar todos los elementos como empacados
       </button>
     </div>
   );
