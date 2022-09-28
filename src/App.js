@@ -16,17 +16,13 @@ function App() {
   const [unpackedFilterInput, setunpackedFilterInput] = useState("");
 
   // Add Element Bar
-  const [addElementBarValue, setaddElementBarValue] = useState("");
+  const [addElementBarValue, setAddElementBarValue] = useState("");
 
-  function handleInputBarChange(e) {
-    setaddElementBarValue(e.target.value);
-  }
-
-  function onButtonClick(value, e) {
+  function onButtonClick(value) {
     const updatedItems = [
       ...items,
       {
-        value: value,
+        value,
         id: items.length + 1,
         packed: false,
       },
@@ -34,14 +30,14 @@ function App() {
     setItems(updatedItems);
 
     // Actualizamos el estado para que se resetee la barra de input con cada uso
-    setaddElementBarValue("");
+    setAddElementBarValue("");
   }
 
   // Selecciona los ítems correctos para cada lista
   let packedItems = [];
   let unpackedItems = [];
 
-  items.filter((item) => {
+  items.forEach((item) => {
     if (item.packed === true) {
       packedItems.push(item);
     }
@@ -52,28 +48,34 @@ function App() {
   });
 
   const filterUnpackedItems = unpackedItems.filter((elem) => {
-    if (
+    return (
       elem.value.toUpperCase().indexOf(unpackedFilterInput.toUpperCase()) >= 0
-    ) {
-      return true;
-    }
+    );
+
+    // IndexOf devuelve el primer índice donde se puede encontrar un elemento en un array (o string) o devuelve -1
+    // Si el elemento que se está filtrando, contiene el input del usuario (si el output es mayor a -1)
+    // Se devuelve el elemento y se incluye en el nuevo array
+    // if (
+    //   elem.value.toUpperCase().indexOf(unpackedFilterInput.toUpperCase()) >= 0
+    // ) {
+    //   return true;
+    // }
   });
 
   const filterPackedItems = packedItems.filter((elem) => {
-    if (
+    return (
       elem.value.toUpperCase().indexOf(packedFilterInput.toUpperCase()) >= 0
-    ) {
-      return true;
-    }
+    );
   });
 
   // Borra un elemento de cualquiera de las listas
   function removeElement(id) {
     let updatedItems = items.filter((elem) => {
+      return elem.id !== id;
       // Si el ID coincide no se devuelve el elemento, por lo tanto se elimina del array
-      if (elem.id !== id) {
-        return elem;
-      }
+      /* if (elem.id !== id) {
+        return true;
+      } */
     });
     setItems(updatedItems);
   }
@@ -82,23 +84,18 @@ function App() {
     const markedItems = items.map((elem) => {
       if (elem.id === id) {
         elem.packed = !elem.packed;
-        return elem;
-      } else {
-        return elem;
       }
+      return elem;
     });
     setItems(markedItems);
   }
 
   function checkAllItems() {
-    console.log("daniell");
     const allMarkedItems = items.map((elem) => {
       if (elem.packed === false) {
         elem.packed = true;
-        return elem;
-      } else {
-        return elem;
       }
+      return elem;
     });
     setItems(allMarkedItems);
   }
@@ -108,8 +105,8 @@ function App() {
       <Header />
       <AddElementBar
         value={addElementBarValue}
-        onChange={handleInputBarChange}
         onClick={onButtonClick}
+        onChange={(e) => setAddElementBarValue(e.target.value)}
       />
       <ItemList
         title="Elementos no empacados"
@@ -118,6 +115,7 @@ function App() {
         checkItems={checkItems}
         userInput={unpackedFilterInput}
         setUserInput={setunpackedFilterInput}
+        packed="false"
       />
       <ItemList
         title="Elementos empacados"
@@ -126,6 +124,7 @@ function App() {
         checkItems={checkItems}
         userInput={packedFilterInput}
         setUserInput={setpackedFilterInput}
+        packed="true"
       />
       <button className="btn-reset default" onClick={checkAllItems}>
         Marcar todos los elementos como no empacados
@@ -135,14 +134,3 @@ function App() {
 }
 
 export default App;
-
-// export default function App() {
-//   const [val, setVal] = useState();
-
-//   return (
-//     <div>
-//       <input type="text" value={val} />
-//       <button onClick={() => setVal(() => "")}>Reset</button>
-//     </div>
-//   );
-// }

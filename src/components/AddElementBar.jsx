@@ -1,22 +1,20 @@
 function AddElementBar({ value, onChange, onClick }) {
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    onClick(value);
+  }
   return (
     <div className="input-bar">
-      <input
-        type="text"
-        name="new"
-        placeholder="Añade un nuevo elemento"
-        onChange={onChange}
-        onKeyPress={(e) => (e.key === "Enter" ? onClick(value, e) : null)}
-        value={value}
-      ></input>
-      <button
-        className="default"
-        type="submit"
-        name="submit"
-        onClick={() => onClick(value)}
-      >
-        Añadir
-      </button>
+      <form onSubmit={handleFormSubmit}>
+        <input
+          type="text"
+          name="newSearchInput"
+          placeholder="Añade un nuevo elemento"
+          onChange={onChange}
+          value={value}
+        />
+        <input type="submit" className="default" value="Añadir" />
+      </form>
     </div>
   );
 }

@@ -7,6 +7,7 @@ function ItemList({
   checkItems,
   userInput,
   setUserInput,
+  packed,
 }) {
   return (
     <div className="item-list">
@@ -29,6 +30,7 @@ function ItemList({
               key={elem.id}
               id={elem.id}
               checkItems={checkItems}
+              checked={packed}
             />
           );
         })}

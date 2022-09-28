@@ -8,6 +8,10 @@
 *::after {
   box-sizing: border-box;
 }
+html {
+  height: auto;
+  min-height: 100%;
+}
 
 body {
   margin: 0;
@@ -16,7 +20,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
+  background-image: linear-gradient(to right bottom, rgba(5, 25, 55, 0.9), rgba(0, 77, 122, 0.8), rgba(0, 135, 147, 0.8), rgba(0, 191, 114, 0.8), rgba(168, 235, 18, 0.4));
+  background-repeat: no-repeat;
 }
 
 code {
@@ -24,24 +29,11 @@ code {
     monospace;
 }
 
-/* :root {
-  --deep-purple: rgb(44, 1, 51);
-  --gree: green;
-} */
-
-#root {
-  height: 100%;
-}
-
 .App {
-  /* background: rgb(2,0,36); */
-  /* background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.7831632653061225) 35%, rgba(0,212,255,1) 100%); */
-  /* background: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12); */
-  background-image: linear-gradient(to right bottom, rgba(5, 25, 55, 0.9), rgba(0, 77, 122, 0.8), rgba(0, 135, 147, 0.8), rgba(0, 191, 114, 0.8), rgba(168, 235, 18, 0.4));
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .header {
@@ -58,6 +50,10 @@ code {
 
 .input-bar {
   width: 100%;
+}
+
+.input-bar form {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -68,7 +64,7 @@ code {
   border: none;
 }
 
-.input-bar button {
+.input-bar input[type="submit"]{
   width: 10%;
   cursor: pointer;
 }
@@ -79,6 +75,7 @@ code {
   border: none;
   padding: 5px;
   border: 1px solid rgba(0, 77, 122, 0.1);
+  height: 100%;
 }
 
 .default:active {
@@ -134,8 +131,12 @@ padding: 0 20px 20px 20px;
   width: 80%;
 }
 
-@media (max-width: 425px) {
-  .input-bar {
+@media (max-width: 428px) {
+  .App {
+    height: 100%;
+  }
+
+  .input-bar form {
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -144,7 +145,7 @@ padding: 0 20px 20px 20px;
   .input-bar input[type="text"] {
     width: 80%;
   }
-  .input-bar button {
+  .input-bar input[type="submit"] {
     width: 80%;
   }
 }
