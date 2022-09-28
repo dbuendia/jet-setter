@@ -115,7 +115,7 @@ function App() {
         checkItems={checkItems}
         userInput={unpackedFilterInput}
         setUserInput={setunpackedFilterInput}
-        packed="false"
+        packed={false}
       />
       <ItemList
         title="Elementos empacados"
@@ -124,7 +124,7 @@ function App() {
         checkItems={checkItems}
         userInput={packedFilterInput}
         setUserInput={setpackedFilterInput}
-        packed="true"
+        packed={true}
       />
       <button className="btn-reset default" onClick={checkAllItems}>
         Marcar todos los elementos como no empacados
